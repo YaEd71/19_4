@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if message %}
+        <p style="color: green;">{{ message }}</p>
+    {% else %}
+        {% if form %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Зарегистрироваться">
+            </form>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <p>
+                    <label for="username">Введите логин:</label>
+                    <input type="text" name="username" id="username" maxlength="30" required>
+                </p>
+                <p>
+                    <label for="password">Введите пароль:</label>
+                    <input type="password" name="password" id="password" minlength="8" required>
+                </p>
+                <p>
+                    <label for="repeat_password">Повторите пароль:</label>
+                    <input type="password" name="repeat_password" id="repeat_password" minlength="8" required>
+                </p>
+                <p>
+                    <label for="age">Введите свой возраст:</label>
+                    <input type="number" name="age" id="age" max="999" required>
+                </p>
+                <input type="submit" value="Зарегистрироваться">
+            </form>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
