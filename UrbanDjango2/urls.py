@@ -20,9 +20,9 @@ from django.urls import path
 from task1 import views as task1_views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', task1_views.sign_up_by_html, name='sign_up_by_html'),
     path('django_sign_up', task1_views.sign_up_by_django, name='sign_up_by_django'),
-    path('admin/', admin.site.urls),
     path('platform/', task1_views.platform, name='platform'),
     path('platform/games/', task1_views.games, name='games'),
     path('platform/cart/', task1_views.cart, name='cart'),

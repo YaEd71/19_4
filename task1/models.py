@@ -8,7 +8,7 @@ class Buyer(models.Model):
     age = models.PositiveIntegerField() #  для возраста (только положительные числа)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} (Age: {self.age})"
 
 class Game(models.Model):
     title = models.CharField(max_length=200) # для названия игры
@@ -19,4 +19,4 @@ class Game(models.Model):
     buyer = models.ManyToManyField(Buyer, related_name='games') # для связи с моделью Buyer
 
     def __str__(self):
-        return self.title
+        return f"{self.title} (${self.cost})"
